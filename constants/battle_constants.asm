@@ -47,14 +47,21 @@ DEF NUM_LEVEL_STATS EQU const_value
 
 ; move struct members (see data/moves/moves.asm)
 rsreset
-DEF MOVE_ANIM   rb ; 0
-DEF MOVE_EFFECT rb ; 1
-DEF MOVE_POWER  rb ; 2
-DEF MOVE_TYPE   rb ; 3
-DEF MOVE_ACC    rb ; 4
-DEF MOVE_PP     rb ; 5
-DEF MOVE_CHANCE rb ; 6
-DEF MOVE_LENGTH EQU _RS
+DEF MOVE_ANIM     rb ; 0
+DEF MOVE_EFFECT   rb ; 1
+DEF MOVE_POWER    rb ; 2
+DEF MOVE_TYPE     rb ; 3
+DEF MOVE_ACC      rb ; 4
+DEF MOVE_PP       rb ; 5
+DEF MOVE_CHANCE   rb ; 6
+DEF MOVE_CATEGORY rb ; 7
+DEF MOVE_LENGTH   EQU _RS
+
+; move category constants
+	const_def
+	const MOVE_CATEGORY_NONE   ; 00 (no damage)
+	const MOVE_CATEGORY_PHYS   ; 01 (physical move)
+	const MOVE_CATEGORY_SPEC   ; 02 (special move)
 
 ; stat constants
 ; indexes for:

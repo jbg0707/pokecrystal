@@ -2540,8 +2540,8 @@ PlayerAttackDamage:
 	ld d, a
 	ret z
 
-	ld a, [hl]
-	cp SPECIAL
+	ld a, [wPlayerMoveStructCategory]
+	cp MOVE_CATEGORY_SPEC
 	jr nc, .special
 
 ; physical
@@ -2672,8 +2672,8 @@ CheckDamageStatsCritical:
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .enemy
-	ld a, [wPlayerMoveStructType]
-	cp SPECIAL
+	ld a, [wPlayerMoveStructCategory]
+	cp MOVE_CATEGORY_SPEC
 ; special
 	ld a, [wPlayerSAtkLevel]
 	ld b, a
@@ -2686,8 +2686,8 @@ CheckDamageStatsCritical:
 	jr .end
 
 .enemy
-	ld a, [wEnemyMoveStructType]
-	cp SPECIAL
+	ld a, [wEnemyMoveStructCategory]
+	cp MOVE_CATEGORY_SPEC
 ; special
 	ld a, [wEnemySAtkLevel]
 	ld b, a
@@ -2779,13 +2779,13 @@ EnemyAttackDamage:
 
 ; No damage dealt with 0 power.
 	ld hl, wEnemyMoveStructPower
-	ld a, [hli] ; hl = wEnemyMoveStructType
+	ld a, [hli]
 	ld d, a
 	and a
 	ret z
 
-	ld a, [hl]
-	cp SPECIAL
+	ld a, [wEnemyMoveStructCategory]
+	cp MOVE_CATEGORY_SPEC
 	jr nc, .special
 
 ; physical
